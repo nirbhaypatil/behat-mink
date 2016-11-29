@@ -8,7 +8,6 @@ Feature: Test
   Scenario: Search for bdd on wikipedia
     #Given I am on "/"
     Given I go to wikipedia 
-    When I fill in the following:
-      |search|BDD|
+    When I search "BDD"
     And I press "go"
     Then I should see "Behavior-driven development"

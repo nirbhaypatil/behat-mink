@@ -44,15 +44,37 @@ class FeatureContext extends BehatContext
 
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+	/**
+     * @Given /^I go to wikipedia$/
+     */
+    public function iGoToWikipedia()
+    {
+        $this->gui->start();
+		$this->gui->visit("https://en.wikipedia.org/wiki/Main_Page");
+		$this->gui->wait(5000);
+		
+    
+    }
+	/**
+     * @When /^I search "([^"]*)"$/
+     */
+    public function iFillInTheFollowing($arg1)
+    {
+		$page = $this->gui->getPage();
+		$page->fillField("search", $arg1);
+		
+    }
+	
+	 /**
+     * @Given /^I press "([^"]*)"$/
+     */
+    public function iPress($arg1)
+    {
+       $page = $this->gui->getPage();
+	   $button = $page->findButton('go');
+	   $button->click();
+    }
+
+
+
 }
